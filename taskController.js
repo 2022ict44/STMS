@@ -47,3 +47,19 @@ export const update = async (req, res) => {
     return res.status(500).json({ error: "Internal Server Error." });
   }
 };
+
+// DELETE: Purge a task record entry completely from storage
+export const deleteUser = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const taskExist = await Task.findOne({ _id: id });
+    if (!taskExist) {
+      return res.status(404).json({ message: "Target task record not found." });
+    }
+
+    await Task.findByIdAndDelete(id);
+    return res.status(201).json({ message: "Task deleted successfully." });
+  } catch (error) {
+    return res.status(500).json({ error: "Internal Server Error." });
+  }
+};
