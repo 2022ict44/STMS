@@ -31,3 +31,19 @@ export const fetch = async (req, res) => {
     return res.status(500).json({ error: "Internal Server Error." });
   }
 };
+
+// UPDATE: Modify properties of a task via ID parameters
+export const update = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const taskExist = await Task.findOne({ _id: id });
+    if (!taskExist) {
+      return res.status(404).json({ message: "Target task not found." });
+    }
+
+    const updatedTask = await Task.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });
+    return res.status(201).json(updatedTask);
+  } catch (error) {
+    return res.status(500).json({ error: "Internal Server Error." });
+  }
+};
