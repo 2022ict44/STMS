@@ -23,9 +23,6 @@ export const create = async (req, res) => {
 export const fetch = async (req, res) => {
   try {
     const tasks = await Task.find();
-    if (tasks.length === 0) {
-      return res.status(404).json({ message: "No tasks or deadlines found." });
-    }
     return res.status(200).json(tasks);
   } catch (error) {
     return res.status(500).json({ error: "Internal Server Error." });

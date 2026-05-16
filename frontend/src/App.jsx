@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const API_BASE = "http://localhost:8000/api/task";
+const API_BASE = import.meta.env.VITE_API_BASE || "/api/task";
 
 const PRIORITY_OPTIONS = ["Low", "Medium", "High"];
 
@@ -211,10 +211,6 @@ export default function App() {
     setLoading(true);
     try {
       const res = await fetch(`${API_BASE}/getalltasks`);
-      if (res.status === 404) {
-        setTasks([]);
-        return;
-      }
       if (!res.ok) throw new Error("Failed to load tasks.");
       const data = await res.json();
       setTasks(Array.isArray(data) ? data : []);

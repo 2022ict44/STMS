@@ -1,18 +1,18 @@
 import express from "express";
 import mongoose from "mongoose";
-import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import route from "./routes/taskRoute.js";
 import cors from "cors";
 
-const app = express();
-app.use(cors());
-app.use(bodyParser.json());
 dotenv.config();
-app.use("/api/tasks",route)
 
-const PORT = process.env.PORT || 5000;
+const app = express();
+const PORT = Number(process.env.PORT) || 5000;
 const MONGOURL = process.env.MONGO_URL;
+
+app.use(cors());
+app.use(express.json());
+app.use("/api/task", route);
 
 mongoose
   .connect(MONGOURL)
@@ -23,5 +23,3 @@ mongoose
     });
   })
   .catch((error) => console.log(error));
-
-app.use("/api/task", route);
