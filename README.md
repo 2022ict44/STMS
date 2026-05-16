@@ -62,6 +62,7 @@ Base URL: `http://localhost:8000/api/task`
 | DELETE | `/delete/:id`         | Delete a task by `_id`         |
 
 ### POST `/api/task/create`
+![API Endpoints](./screenshots/post.png.png)
 
 **Request body (JSON):**
 
@@ -90,6 +91,7 @@ Base URL: `http://localhost:8000/api/task`
 ```
 
 ### GET `/api/task/getalltasks`
+![API Endpoints](./screenshots/get.png.png)
 
 **Success response (200):**
 
@@ -119,6 +121,7 @@ Base URL: `http://localhost:8000/api/task`
 ```
 
 ### PUT `/api/task/update/:id`
+![API Endpoints](./screenshots/put.png.png)
 
 **Request body (JSON)** — send only fields to change:
 
@@ -130,6 +133,7 @@ Base URL: `http://localhost:8000/api/task`
 ```
 
 ### DELETE `/api/task/delete/:id`
+![API Endpoints](./screenshots/delete.png.png)
 
 **Success response (201):**
 
@@ -215,6 +219,7 @@ Server is running on port : 8000
 ```
 
 ### Terminal 2 — Frontend
+![Dashboard UI](./screenshots/frontend.png.png)
 
 ```bash
 cd frontend
@@ -246,6 +251,14 @@ Each task document includes:
 | `isCompleted` | Boolean | Default: `false`               |
 
 ---
+## Another screenshots
+
+![frontend](./screenshots/deleteFR.png.png)
+![frontend](./screenshots/update.png.png)
+![frontend](./screenshots/create.png.png)
+![connect mongoDB compass](./screenshots/mongo.png.png)
+![README file](./screenshots/README.png.png)
+![code vibeing](./screenshots/codeVibeing.png.png)
 
 ## License
 
